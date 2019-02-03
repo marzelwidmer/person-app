@@ -11,15 +11,7 @@ class MainArea extends Component {
           <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
             Learn React
           </a>
-          {/* <Row>
-            <Col xs="6" sm="4">
-              <div class="bg-primary text-white">.bg-primary .col-6 .col-sm-4</div>
-              <div class="bg-success text-white">.bg-primary .col-6 .col-sm-4</div>
-            </Col>
-            <Col xs="6" sm="4" class="p-3 mb-2 bg-light text-dark">
-            <div class="bg-light text-dark">.bg-primary .col-6 .col-sm-4</div>
-            </Col>
-          </Row> */}
+          
         </Container>
     )
   }

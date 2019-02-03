@@ -11,7 +11,11 @@
 .Main-link {
   color: #61dafb;
 }
+a:hover {
+  color: white;
+}
 
 .navbar-dark .navbar-brand {
   color: #23b3db;
 }
+ 
