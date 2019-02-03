@@ -7,6 +7,7 @@ export default class GitHub extends Component {
     super(props)
     this.state = {}
   }
+  
   componentDidMount() {
     fetch(urlFromUsername(this.props.username))
       .then(response => {
