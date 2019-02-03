@@ -1,16 +1,17 @@
 import React, { Component } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import MainArea from "../layout/MainArea"
-import TopNav from "../layout/TopNav"
+ import TopNav from "../layout/TopNav"
 import "./App.css"
 import GitHub from "../github/GitHub";
-// import logo from "./logo.svg"
+import Person from "../person/Person";
 
 class App extends Component {
   render() {
      return (
-       <div>
-         <GitHub username="c3smonkey"> </GitHub>
+       <div className="App">
+         <TopNav />
+         {/* <GitHub username="c3smonkey" className="App-main"> </GitHub> */}
+         <Person></Person>
        </div>
      )
   }
