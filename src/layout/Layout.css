@@ -1,0 +1,17 @@
+.Main {
+  background-position: left;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Main-link {
+  color: #61dafb;
+}
+
+.navbar-dark .navbar-brand {
+  color: #23b3db;
+}
