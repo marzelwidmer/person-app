@@ -113,8 +113,6 @@ jobs:
       - deploy:
           name: Build and Push Docker Image
           command: |
-            ls -la 
-            # cp ~/repo/$CIRCLE_PROJECT_REPONAME.jar .
             TAG=${CIRCLE_SHA1}
              if [ "${CIRCLE_BRANCH}" == "master" ]; then
                TAG=latest
