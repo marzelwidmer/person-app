@@ -27,7 +27,7 @@ jobs:
     <<: *node-defaults
     steps:
       - attach_workspace:
-        at: ~/repo
+          at: ~/repo
       
       - restore_cache: # special step to restore the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
