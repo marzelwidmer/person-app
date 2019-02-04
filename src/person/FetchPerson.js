@@ -5,7 +5,7 @@ var traverson = require("traverson")
 var JsonHalAdapter = require("traverson-hal")
 // register the traverson-hal plug-in for media type 'application/hal+json'
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter)
-const url = `http://localhost:8080`
+const url = `http://service-latest-ab.apps.c3smonkey.ch/`
 
 export default class FetchPerson extends Component {
   constructor(props) {
