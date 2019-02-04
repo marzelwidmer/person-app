@@ -26,6 +26,7 @@ jobs:
   build-node:
     <<: *node-defaults
     steps:
+      - checkout
       - attach_workspace:
           at: ~/repo
   
