@@ -28,7 +28,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      
   
       - run:
           name: Setup Dependencies
@@ -36,48 +35,12 @@ jobs:
       
       - run:
           name: Run Build
-          command: npm build  
-
-  build-maven:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - restore_cache:
-          key: circleci-challenge-{{ checksum "pom.xml" }}
-      - run:
-          name: Maven Dependency go-offline
-          command: |
-                  mvn dependency:go-offline     
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: circleci-challenge-{{ checksum "pom.xml" }}
-      - run:
-          name: Maven Build and Test
-          command: |
-            mvn package -B
-      - run:
-          name: Copy deployment artifacts to workspace
-          command: |
-            cp target/${CIRCLE_PROJECT_REPONAME}-*.jar ~/repo/person-service.jar
-            cp target/zerocode-*.csv ~/repo
-            cp target/zerocode-*.html ~/repo
-            cp -R target/zerocode-test-reports ~/repo
-      - store_test_results:
-          path: target/surefire-reports
-      - store_artifacts:
-          path: ~/repo/person-service.jar
-      - store_artifacts:
-          path: target/zerocode-test-reports
-      - store_artifacts:
-          path: target/zerocode-junit-interactive-fuzzy-search.html
+          command: npm build    
       - persist_to_workspace:
           root: ~/repo
           paths:
-            - zerocode-test-reports
-            - zerocode-junit-interactive-fuzzy-search.html
-            - person-service.jar
+            - build/
+
             
   release:
     <<: *defaults
@@ -86,8 +49,7 @@ jobs:
           at: ~/repo
       - checkout
       - run: |
-          echo "not implemented" 
-          ls -la
+          npx semantic-release --debug
  
 
   docker-build-push:
@@ -131,14 +93,15 @@ jobs:
       - deploy:
           name: Build and Push Docker Image
           command: |
-            cp ~/repo/$CIRCLE_PROJECT_REPONAME.jar .
+            ls -la 
+            # cp ~/repo/$CIRCLE_PROJECT_REPONAME.jar .
             TAG=${CIRCLE_SHA1}
              if [ "${CIRCLE_BRANCH}" == "master" ]; then
                TAG=latest
              else
                TAG=${CIRCLE_BRANCH}
              fi
-             docker build --build-arg JAR_FILE=$CIRCLE_PROJECT_REPONAME.jar -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$TAG .
+             docker build -t $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$TAG .
              docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
              docker push $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$TAG
 
