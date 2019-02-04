@@ -136,11 +136,11 @@ workflows:
       - docker-build-push:
           requires:
             - build-node
-      - release:
-          requires:
-            - build-node
-          filters:
-            branches:
-              only: master
+      # - release:
+      #     requires:
+      #       - build-node
+      #     filters:
+      #       branches:
+      #         only: master
 
 
