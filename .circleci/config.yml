@@ -37,7 +37,6 @@ jobs:
       - run:
           name: Run Build
           command: npm build  
-      - run: npx semantic-release --debug
 
   build-maven:
     <<: *defaults
