@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import FetchPerson from "./FetchPerson";
 
 // require traverson and traverson-hal
 var traverson = require("traverson")
@@ -8,33 +7,35 @@ var JsonHalAdapter = require("traverson-hal")
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter)
 const url = `http://localhost:8080`
 
-export default class Person extends Component {
+export default class FetchPerson extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      persons: []
+    }
   }
-  
+
   componentDidMount() {
     //  use Traverson to follow links, as usual
     traverson
       .from(url)
       .jsonHal()
       .follow("self", "get-all-persons")
-      .getResource(function(error, document) {
-        if (error) {
-          console.error("No luck :-)")
-          throw Error("Network request failed")
-        } else {       
-          console.log("We have followed the path and reached our destination.")
-          console.log(JSON.stringify(document))
-        }
+      .getResource((error, document) => {           
+        console.log(JSON.stringify(document))
+        this.setState({
+          persons: JSON.stringify(document)
+        })
       })
+
+
   }
 
   render() {
-    
-    if (this.state.requestFailed) return <p>Failed..</p>
-    if (!this.state.data) return <p>Loading...</p>
-    return <div />
+    return (
+      <div>
+        {this.state.persons}
+      </div>
+    )
   }
 }
