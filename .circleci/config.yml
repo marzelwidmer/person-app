@@ -39,18 +39,19 @@ jobs:
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
+
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+
       - run:
           name: Run Build
-          command: yarn build
+          command: CI=false yarn build
 
       - run:
           name: Copy deployment artifacts to workspace
           command: |
-            ls -la
             cp -R build ~/repo/build
 
       - store_artifacts:
