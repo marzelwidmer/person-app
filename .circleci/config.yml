@@ -35,7 +35,15 @@ jobs:
       
       - run:
           name: Run Build
-          command: npm build    
+          command: npm build   
+           
+      - run:
+          name: Copy deployment artifacts to workspace
+          command: |
+            cp -R build ~/repo/build
+
+      - store_artifacts:
+          path: ~/repo/build
       - persist_to_workspace:
           root: ~/repo
           paths:
