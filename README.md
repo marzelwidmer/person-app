@@ -11,7 +11,7 @@ oc new-app --docker-image=c3smonkey/person-app:latest \
 ```
 ## Expose
 ```
-oc expose svc/person-app --name=person-appk
+oc expose svc/person-app --name=person-app
 ```
 
 
