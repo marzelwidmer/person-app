@@ -1,13 +1,21 @@
 # Person App
 
+## Deploy App
 ```
-npm install @semantic-release/commit-analyzer \
-    @semantic-release/npm \
-    @semantic-release/release-notes-generator \
-    semantic-release --save-dev
+oc new-app --docker-image=c3smonkey/person-app:latest \
+    -n ab \
+     --name='person-app' \
+    -l name='person-app' \
+    -e SELECTOR=person-app
+    
+```
+## Expose
+```
+oc expose svc/person-app --name=person-app --port=8080
 ```
 
- 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
