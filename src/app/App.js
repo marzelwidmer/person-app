@@ -7,6 +7,7 @@ import FetchPerson from "../person/FetchPerson";
 
 class App extends Component {
   render() {
+    document.title = "PersonApp"
      return (
        <div className="App">
          <TopNav />
