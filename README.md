@@ -14,6 +14,23 @@ oc new-app --docker-image=c3smonkey/person-app:latest \
 oc expose svc/person-app --name=person-app --port=8080
 ```
 
+Now suppose you want to update to next version of the service, to version 1.1, 
+so you need to run next commands to deploy next version of crimes service container, which is pushed at Docker Hub.
+
+### Update Image
+```
+oc import-image person-app:1.1 --from=c3smonkey/person-app:1.1
+```
+
+Then let's prepare the application so when next rollout command is applied, the new image is deployed:
+```
+oc patch dc/person-app -p '{"spec": { "triggers":[ {"type": "ConfigChange", "type": "ImageChange" , "imageChangeParams": {"automatic": true, "containerNames":["person-app"],"from": {"name":"person-app:1.1"}}}]}}'
+```
+And finally you can do the rollout of the application by using:
+```
+oc rollout latest dc/person-app 
+```
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
