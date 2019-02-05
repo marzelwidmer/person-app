@@ -31,6 +31,11 @@ And finally you can do the rollout of the application by using:
 oc rollout latest dc/person-app 
 ```
 
+Rolback
+```
+oc rollback person-app-1
+```
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
