@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
 import GitHub from "../github/GitHub";
 import FetchPerson from "../person/FetchPerson";
+import Person from '../person/Person';
 
 class App extends Component {
   render() {

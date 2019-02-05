@@ -29,11 +29,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "css-loader": "^2.1.0",
-    "terser": "^3.16.1",
     "@semantic-release/commit-analyzer": "^6.1.0",
     "@semantic-release/npm": "^5.1.4",
     "@semantic-release/release-notes-generator": "^7.1.4",
-    "semantic-release": "^15.0.0"
+    "css-loader": "^2.1.0",
+    "semantic-release": "^15.0.0",
+    "terser": "^3.16.1"
   }
 }

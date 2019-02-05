@@ -7,11 +7,18 @@ var JsonHalAdapter = require("traverson-hal")
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter)
 const url = `http://service-latest-ab.apps.c3smonkey.ch/`
 
+ 
+var person = {
+  name: '',
+  age: '',
+}
+
 export default class FetchPerson extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      persons: []
+       result: {}
+      
     }
   }
 
@@ -21,20 +28,36 @@ export default class FetchPerson extends Component {
       .from(url)
       .jsonHal()
       .follow("self", "get-all-persons")
-      .getResource((error, document) => {           
-        console.log(JSON.stringify(document))
+      .getResource((error, document) => {
+        // const myObjStr = JSON.stringify(document);
+        // console.log(myObjStr);
+        // console.log(JSON.parse(myObjStr));
+        // console.log(JSON.parse(JSON.stringify(document)))
+        
+        var result = JSON.parse(JSON.stringify(document))
+        person.name = result._embedded.person[0].name
+        person.age = result._embedded.person[0].age
+        console.log("... " + result._embedded.person.length)
         this.setState({
-          persons: JSON.stringify(document)
+          result: JSON.parse(JSON.stringify(document))
+
         })
       })
-
-
   }
 
   render() {
     return (
+      
       <div>
-        {this.state.persons}
+        <p>totalPartner</p>
+        {this.state.result.totalPartner}
+        <p></p>
+        <ul>
+          <li> {person.name}</li>
+          <li> {person.age}</li>
+        </ul>
+       
+ 
       </div>
     )
   }
