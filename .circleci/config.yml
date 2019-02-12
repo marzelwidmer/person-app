@@ -155,9 +155,9 @@ workflows:
       - docker-build-push:
           requires:
             - build-node
-      - okd:
-          requires:
-            - docker-build-push
+      # - okd:
+      #     requires:
+      #       - docker-build-push
 
       # - release:
       #     requires:
