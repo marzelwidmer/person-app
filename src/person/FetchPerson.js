@@ -7,10 +7,6 @@ var JsonHalAdapter = require("traverson-hal")
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter)
 const url = `http://service-latest-ab.apps.c3smonkey.ch/`
 
-var person = {
-  name: "",
-  age: ""
-}
 
 export default class FetchPerson extends Component {
   constructor(props) {
@@ -49,16 +45,13 @@ export default class FetchPerson extends Component {
   render() {
     return (
       <div>
-        <p>totalPartner</p>
-        {this.state.result.totalPartner}
+        <p>Found persons: {this.state.result.totalPartner}</p>
+        
         <ul>
-          <li> {person.name}</li>
-          <li> {person.age}</li>
+          <li>Name: { this.state.persons.map((person, key) => person.name)}</li>
+          <li>Age: { this.state.persons.map((person, key) => person.age)}</li>
         </ul>
         <p />
-        <h3>Persons</h3>
-        {this.state.persons.map((person, key) => person.name)}
-        
       </div>
     )
   }
