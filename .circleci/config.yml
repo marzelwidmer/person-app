@@ -122,7 +122,7 @@ jobs:
              docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
              docker push $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$TAG
 
-okd:
+  okd:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -157,7 +157,7 @@ workflows:
             - build-node
       - okd:
           requires:
-            - build-node
+            - docker-build-push
 
       # - release:
       #     requires:
