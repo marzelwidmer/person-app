@@ -1,9 +1,41 @@
 # Person App
 
+
+## Create Project
+```bash
+oc new-project dev \
+         --description="Development Stage" \
+         --display-name="Development"
+```
+
+### Create Service Account
+As soon as a service account is created, two secrets are automatically added to it:
+- an API token
+- credentials for the OpenShift Container Registry
+  
+```bash
+oc create sa robot
+```
+#### Describe ServiceAccount
+These can be seen by describing the service account:
+```
+oc describe sa robot
+```
+To get a login token
+
+```
+oc describe secret robot-token-xy
+```
+
+
+
+
+
+
 ## Deploy App
 ```
 oc new-app --docker-image=c3smonkey/person-app:latest \
-    -n ab \
+    -n dev \
      --name='person-app' \
     -l name='person-app' \
     -e SELECTOR=person-app
@@ -22,6 +54,8 @@ so you need to run next commands to deploy next version of crimes service contai
 oc import-image person-app:1.1 --from=c3smonkey/person-app:1.1
 ```
 
+
+
 Then let's prepare the application so when next rollout command is applied, the new image is deployed:
 ```
 oc patch dc/person-app -p '{"spec": { "triggers":[ {"type": "ConfigChange", "type": "ImageChange" , "imageChangeParams": {"automatic": true, "containerNames":["person-app"],"from": {"name":"person-app:1.1"}}}]}}'
@@ -31,7 +65,7 @@ And finally you can do the rollout of the application by using:
 oc rollout latest dc/person-app 
 ```
 
-Rolback
+### Rolback
 ```
 oc rollback person-app-1
 ```
