@@ -28,14 +28,14 @@ export default class Customer extends Component {
           console.log('We have followed the path and reached our destination.')
           // console.log(JSON.stringify(document))
         
-          // const myObjStr = JSON.stringify(document)
-          // console.log(myObjStr)
+          const myObjStr = JSON.stringify(document)
+          console.log(myObjStr)
           // console.log(JSON.parse(myObjStr))
           // console.log(JSON.parse(JSON.stringify(document)))
   
           var result2 = JSON.parse(JSON.stringify(document))
-
           console.log("Customers lenght " + result2._embedded.customers.length)
+
            
           this.setState({
             result: JSON.parse(JSON.stringify(document))._embedded.customers

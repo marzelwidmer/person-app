@@ -41,7 +41,7 @@ oc new-app --docker-image=c3smonkey/person-app:latest \
     -e SELECTOR=person-app
     
 ```
-## Expose
+## Expose 
 ```
 oc expose svc/person-app --name=person-app --port=8080
 ```
