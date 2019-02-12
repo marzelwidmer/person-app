@@ -49,6 +49,9 @@ export default class Customer extends Component {
       <div key={item.customerId}>
         <h2>{ item.firstName }, { item.lastName } </h2>
         <span>{ item.address.city }, { item.address.country }</span>
+        <br/>
+        <span><i>{ item.address.street }</i></span>
+        <hr color="#61dafb"/>
       </div>
     ));
     return (
