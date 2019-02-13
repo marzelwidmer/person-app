@@ -56,9 +56,7 @@ export default class Customer extends Component {
     ));
     return (
       <div id="layout-content" className="layout-content-wrapper">
-         <div className="panel-list">{
-            customers 
-            }</div>
+         <div className="panel-list">{customers}</div>
       </div>
     )
   }

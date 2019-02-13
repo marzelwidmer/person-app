@@ -1,20 +1,13 @@
 import React, { Component } from "react"
 
-// require traverson and traverson-hal
-var traverson = require("traverson")
-var JsonHalAdapter = require("traverson-hal")
-// register the traverson-hal plug-in for media type 'application/hal+json'
-traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter)
-const url = `http://monkey-app-dev.apps.c3smonkey.ch/`
-
+const ACTUATOR_SERVICE_URL = `http://monkey-app-dev.apps.c3smonkey.ch/actuator/info`
+//const ACTUATOR_SERVICE_URL = `http://localhost:8080/actuator/info`
+ 
 export default class BlueGreen extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      result: []
-    }
+    this.state = {}
   }
-
   componentDidMount() {
     this.timer = setInterval(() => this.fetchData(), 5000);  
   }
@@ -23,43 +16,24 @@ export default class BlueGreen extends Component {
   }
 
   fetchData = () => {
-    this.setState({...this.state, isFetching: true})
-     //  use Traverson to follow links, as usual
-     traverson
-     .from(url)
-     .jsonHal()
-     .follow("self", "get-all-customers")
-     .getResource((error, document) => {
-       if (error) {
-         console.error('No luck :-) - problem to fetch resource ')
-       } else {
-         console.log('We have followed the path and reached our destination.')        
-         const myObjStr = JSON.stringify(document)
-         console.log(myObjStr)
-
-         this.setState({
-           result: JSON.parse(JSON.stringify(document))._embedded.customers
-         })
-       }
-      })
+    this.setState({ ...this.state, isFetching: true })
+    fetch(ACTUATOR_SERVICE_URL)
+      .then(response => response.json())
+      .then(result => this.setState({ actuator: result, isFetching: false }))
+      .catch(e => console.log(e))
   }
+
   render() {
-    const customers = this.state.result.map((item, i) => (
-     
-     <div key={item.customerId}>
-        <h2>{ item.firstName }, { item.lastName } </h2>
-        <span>{ item.address.city }, { item.address.country }</span>
-        <br/>
-        <span><i>{ item.address.street }</i></span>
-        <hr color="#19ff2d"/>
-      </div>
-    ));
+    if (this.state.isFetching) return <p>Failed..</p>
+    if (!this.state.actuator) return <p>Loading...</p>
     return (
       <div id="layout-content" className="layout-content-wrapper">
-         <div className="panel-list">{
-            customers 
-            }</div>
+        <div className="panel-list">
+           {this.state.actuator.git.branch}
+       </div>
       </div>
+
+     
     )
   }
 }

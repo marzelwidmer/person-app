@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
  import TopNav from "../layout/TopNav"
 import "./App.css"
 import GitHub from "../github/GitHub";
-import FetchPerson from "../person/FetchPerson";
 import Customer from "../customer/Customer"
 import { Clock } from '../timer/Clock';
+import BlueGreen from "../bluegreen/BlueGreen";
  
 class App extends Component {
   render() {
@@ -14,8 +14,8 @@ class App extends Component {
      return (
        <div className="App">
          <TopNav />  
-         
-         <Customer />
+         <BlueGreen />
+         {/* <Customer /> */}
  
          {/* <GitHub username="c3smonkey" className="App-main"> </GitHub> */}
          {/* <FetchPerson /> */}
