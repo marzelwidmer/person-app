@@ -7,7 +7,7 @@ var JsonHalAdapter = require("traverson-hal")
 traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter)
 const url = `http://monkey-app-dev.apps.c3smonkey.ch/`
 
-export default class Customer extends Component {
+export default class BlueGreen extends Component {
   constructor(props) {
     super(props)
     this.state = {

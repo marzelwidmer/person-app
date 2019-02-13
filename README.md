@@ -9,21 +9,12 @@ oc new-project dev \
 ```
 
 
-## Deploy App
+## Deploy App Docker Image
 ```
 oc new-app --docker-image=c3smonkey/person-app:latest \
      --name='monkey-ui' \
     -l name='monkey-ui' \
     -e SELECTOR=monkey-ui
-```
-
-or 
-
-```
-oc new-app nginx-centos7~https://github.com/c3smonkey/person-app.git \
-        --name='monkey-ui' \
-        -l name='monkey-ui' \
-        -e SELECTOR=monkey-ui
 ```
 
 ## Expose 
@@ -39,8 +30,6 @@ so you need to run next commands to deploy next version of crimes service contai
 oc import-image person-app:1.1 --from=c3smonkey/person-app:1.1
 ```
 
-
-
 Then let's prepare the application so when next rollout command is applied, the new image is deployed:
 ```
 oc patch dc/person-app -p '{"spec": { "triggers":[ {"type": "ConfigChange", "type": "ImageChange" , "imageChangeParams": {"automatic": true, "containerNames":["person-app"],"from": {"name":"person-app:1.1"}}}]}}'
@@ -55,6 +44,28 @@ oc rollout latest dc/person-app
 oc rollback person-app-1
 ```
 
+
+
+
+
+## Deploy App S2i 
+```
+oc new-app nodeshift/centos7-s2i-web-app:latest~https://github.com/c3smonkey/person-app.git \
+        --name='monkey-ui' \
+        -l name='monkey-ui' \
+        -e SELECTOR=monkey-ui
+
+
+        
+oc new-app bucharestgold/centos7-s2i-web-app~https://github.com/c3smonkey/person-app.git \
+        --name='monkey-ui' \
+        -l name='monkey-ui' \
+        -e SELECTOR=monkey-ui
+```
+## Expose 
+```
+oc expose svc/monkey-ui
+```
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
