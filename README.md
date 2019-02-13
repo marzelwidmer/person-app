@@ -8,42 +8,27 @@ oc new-project dev \
          --display-name="Development"
 ```
 
-### Create Service Account
-As soon as a service account is created, two secrets are automatically added to it:
-- an API token
-- credentials for the OpenShift Container Registry
-  
-```bash
-oc create sa robot
-```
-#### Describe ServiceAccount
-These can be seen by describing the service account:
-```
-oc describe sa robot
-```
-To get a login token
-
-```
-oc describe secret robot-token-xy
-```
-
-
-
-
-
 
 ## Deploy App
 ```
 oc new-app --docker-image=c3smonkey/person-app:latest \
-    -n dev \
-     --name='person-app' \
-    -l name='person-app' \
-    -e SELECTOR=person-app
-    
+     --name='monkey-ui' \
+    -l name='monkey-ui' \
+    -e SELECTOR=monkey-ui
 ```
+
+or 
+
+```
+oc new-app nginx-centos7~https://github.com/c3smonkey/person-app.git \
+        --name='monkey-ui' \
+        -l name='monkey-ui' \
+        -e SELECTOR=monkey-ui
+```
+
 ## Expose 
 ```
-oc expose svc/person-app --name=person-app --port=8080
+oc expose svc/monkey-ui --name=monkey-ui --port=8080
 ```
 
 Now suppose you want to update to next version of the service, to version 1.1, 
