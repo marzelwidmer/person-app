@@ -14,6 +14,8 @@ import {
 } from "reactstrap"
 
 import './Layout.css'
+import { Clock } from '../timer/Clock';
+import { Timer } from '../timer/Timer';
 
 class TopNav extends Component {
   constructor(props) {
@@ -34,7 +36,9 @@ class TopNav extends Component {
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">Person App</NavbarBrand>
+          <NavbarBrand href="/">MonkeyApp
+           {/* <Timer /> */}
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -42,7 +46,9 @@ class TopNav extends Component {
                 <NavLink href="/components/">Components</NavLink>
               </NavItem> */}
               <NavItem>
-                <NavLink href="https://github.com/c3smonkey/">GitHub</NavLink>
+                <NavLink href="https://github.com/c3smonkey/">GitHub
+                  <Clock clockColor="#68ff75" />
+                </NavLink>
               </NavItem>
               {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>

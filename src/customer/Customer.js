@@ -30,7 +30,6 @@ export default class Customer extends Component {
         
           const myObjStr = JSON.stringify(document)
           console.log(myObjStr)
-          // console.log(JSON.parse(myObjStr))
           // console.log(JSON.parse(JSON.stringify(document)))
   
           var result2 = JSON.parse(JSON.stringify(document))
@@ -46,17 +45,20 @@ export default class Customer extends Component {
 
   render() {
     const customers = this.state.result.map((item, i) => (
-      <div key={item.customerId}>
+     
+     <div key={item.customerId}>
         <h2>{ item.firstName }, { item.lastName } </h2>
         <span>{ item.address.city }, { item.address.country }</span>
         <br/>
         <span><i>{ item.address.street }</i></span>
-        <hr color="#61dafb"/>
+        <hr color="#19ff2d"/>
       </div>
     ));
     return (
       <div id="layout-content" className="layout-content-wrapper">
-         <div className="panel-list">{ customers }</div>
+         <div className="panel-list">{
+            customers 
+            }</div>
       </div>
     )
   }

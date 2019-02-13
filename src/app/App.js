@@ -5,28 +5,24 @@ import "./App.css"
 import GitHub from "../github/GitHub";
 import FetchPerson from "../person/FetchPerson";
 import Customer from "../customer/Customer"
-
+import { Clock } from '../timer/Clock';
+ 
 class App extends Component {
   render() {
-    document.title = "PersonApp"
+ 
+    document.title = "MonkeyApp"
      return (
        <div className="App">
-         <TopNav />
+         <TopNav />  
+         
+         <Customer />
+ 
          {/* <GitHub username="c3smonkey" className="App-main"> </GitHub> */}
          {/* <FetchPerson /> */}
-         <Customer />
        </div>
      )
   }
 }
 
 export default App
-// render() {
-//   document.title = "PersonApp"
-//   return (
-//     <div>
-//       {/* <TopNav />
-//       <MainArea/> */}
-//     </div>
-//   )
-// }
+
