@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-const ACTUATOR_SERVICE_URL = `http://monkey-app-dev.apps.c3smonkey.ch/actuator/info`
+const ACTUATOR_SERVICE_URL = `http://bluegreen-dev.apps.c3smonkey.ch//actuator/info`
 //const ACTUATOR_SERVICE_URL = `http://localhost:8080/actuator/info`
  
 export default class BlueGreen extends Component {
