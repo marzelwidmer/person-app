@@ -9,7 +9,7 @@ export default class BlueGreen extends Component {
     this.state = {}
   }
   componentDidMount() {
-    this.timer = setInterval(() => this.fetchData(), 1000);  
+    this.timer = setInterval(() => this.fetchData(), 2500);  
   }
   componentWillUnmount() {
     this.timer = null;
