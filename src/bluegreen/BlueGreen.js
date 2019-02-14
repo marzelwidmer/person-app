@@ -9,6 +9,7 @@ export default class BlueGreen extends Component {
     this.state = {}
   }
   componentDidMount() {
+    this.fetchData()
     this.timer = setInterval(() => this.fetchData(), 2500);  
   }
   componentWillUnmount() {
@@ -24,7 +25,7 @@ export default class BlueGreen extends Component {
   }
 
   render() {
-    if (this.state.isFetching) return <p>Failed..</p>
+    // if (this.state.isFetching) return <p>Failed..</p>
     if (!this.state.actuator) return <p>Loading...</p>
     return (
       <div id="layout-content" className="layout-content-wrapper">
