@@ -22,16 +22,15 @@ class TopNav extends Component {
     return (
       <div>
         <Navbar color="dark" dark expand="xl" >
-          <NavbarBrand href="/">MonkeyApp</NavbarBrand>
+          <NavbarBrand href="/">MonkeyApp <Clock clockColor="#1ac545" /></NavbarBrand>
+           
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="https://github.com/c3smonkey/">GitHub</NavLink>
             </NavItem>
           </Nav>
         </Navbar>
-        <Navbar color="dark" dark expand="xl" fixed="bottom">
-          <Clock clockColor="#1ac545" />
-        </Navbar>
+         
       </div>
     )
   }

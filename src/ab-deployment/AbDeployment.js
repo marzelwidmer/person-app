@@ -17,7 +17,7 @@ const divStyle = {
 
 const ImageAbDeploymnet = () => (
   <div style={divStyle}>
-    <img src={abDeploymentImg} width="100%" height="100%" alt="bluegreen" />
+    <img src={abDeploymentImg} width="500" height="200"  alt="bluegreen" />
   </div>
 )
  
@@ -50,7 +50,7 @@ export default class AbDeployment extends Component {
         <h2 class="text-center ">A/B Deployment</h2>
         <ImageAbDeploymnet />
         <div className="panel-list">
-          <Alert color={`${this.state.actuator.git.branch === "feature2" ? "secondary" : "dark"}`} className="code">
+          <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
              Greetings from {this.state.actuator.build.artifact} my version is {this.state.actuator.build.version}
           </Alert>
         </div>

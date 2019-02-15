@@ -2,11 +2,7 @@ import React, { Component } from "react"
 import { Alert } from "reactstrap"
 import abTestingImg from "./a-b-testing.png"
 
-
 const ACTUATOR_SERVICE_URL = `http://ab-route-dev.apps.c3smonkey.ch/actuator/info`
-
-
-
 
 const divStyle = {
   padding: "10px",
@@ -21,7 +17,7 @@ const divStyle = {
 
 const ImageAbTesting = () => (
   <div style={divStyle}>
-    <img src={abTestingImg} width="100%" height="100%" alt="bluegreen" />
+    <img src={abTestingImg} width="500" height="200" alt="abTesting" />
   </div>
 )
  
@@ -57,6 +53,7 @@ export default class AbTesting extends Component {
           <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
           Call service feature1(90%) and feature2(10%) - Service {this.state.actuator.build.artifact} with version {this.state.actuator.build.version}
           </Alert>
+        <p></p>
         </div>
       </div>
     )
