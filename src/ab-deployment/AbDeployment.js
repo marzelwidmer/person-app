@@ -57,7 +57,7 @@ export default class AbDeployment extends Component {
     if (!this.state.actuator) return <p>Loading...</p>
     return (
       <div id="layout-content" className="layout-content-wrapper">
-        <h2 class="text-center ">A/B Deployment - Service call {this.state.count}</h2>
+        <h2 class="text-center ">A/B Deployment - service call {this.state.count}</h2>
 
         <ImageAbDeploymnet />
         <div className="panel-list">

@@ -56,7 +56,7 @@ export default class BlueGreen extends Component {
     if (!this.state.actuator) return <p>Loading...</p>
     return (
       <div id="layout-content" className="layout-content-wrapper">
-        <h2 class="text-center ">Blue-Green Deployment - Service call {this.state.count}</h2>
+        <h2 class="text-center ">Blue-Green Deployment - service call {this.state.count}</h2>
         <ImageBlueGreen />
         <div className="panel-list">
           <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
