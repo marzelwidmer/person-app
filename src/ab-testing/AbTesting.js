@@ -1,9 +1,13 @@
 import React, { Component } from "react"
 import { Alert } from "reactstrap"
 import abTestingImg from "./a-b-testing.png"
- 
+
+
 const ACTUATOR_SERVICE_URL = `http://ab-route-dev.apps.c3smonkey.ch/actuator/info`
- 
+
+
+
+
 const divStyle = {
   padding: "10px",
   display: "block",
@@ -17,7 +21,6 @@ const divStyle = {
 
 const ImageAbTesting = () => (
   <div style={divStyle}>
-import abTestingImg from "./a-b-testing.png"
     <img src={abTestingImg} width="100%" height="100%" alt="bluegreen" />
   </div>
 )
@@ -51,8 +54,8 @@ export default class AbTesting extends Component {
         <h2 class="text-center ">A-B Testing</h2>
         <ImageAbTesting />
         <div className="panel-list">
-          <Alert color={`${this.state.actuator.git.branch === "feature2" ? "secondary" : "dark"}`} className="code">
-             Greetings from {this.state.actuator.build.artifact} my version is {this.state.actuator.build.version}
+          <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
+          Call service feature1(90%) and feature2(10%) - Service {this.state.actuator.build.artifact} with version {this.state.actuator.build.version}
           </Alert>
         </div>
       </div>
