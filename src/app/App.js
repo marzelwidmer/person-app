@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import TopNav from "../layout/TopNav"
 import "./App.css"
 import BlueGreen from "../bluegreen/BlueGreen"
+import AbDeployment from '../ab-deployment/AbDeployment';
 
  
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
         <div>
           
           <BlueGreen />
+          <AbDeployment />
 
         </div>
       </div>
