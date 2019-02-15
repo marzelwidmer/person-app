@@ -17,11 +17,16 @@ class App extends Component {
         <TopNav />
 
         <div>
-          <Alert color="primary"><BlueGreen /></Alert>
-          <Alert color="success"><BlueGreen /></Alert>
-          <Alert color="primary"><BlueGreen /></Alert>
-
-         
+          <h2 class="text-center ">
+              <font color="blue">Blue</font>
+              <font color="green">Green</font>
+              - 
+              <font color="blue">A</font>
+              <font color="green">B</font>
+              - Deployment
+          </h2>
+          <Alert color="primary" className="code"><BlueGreen/></Alert>
+          <Alert color="success" className="code"><BlueGreen /></Alert>
         </div>
 
         {/* <Customer /> */}
