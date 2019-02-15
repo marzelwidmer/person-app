@@ -25,7 +25,9 @@ const ImageBlueGreen = () => (
 export default class BlueGreen extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      count: 0
+    }
   }
   componentDidMount() {
     this.fetchData()
@@ -35,7 +37,14 @@ export default class BlueGreen extends Component {
     this.timer = null
   }
 
+  incrementCount(){
+    this.setState({
+      count: this.state.count + 1
+    })
+  }
+
   fetchData = () => {
+    this.incrementCount()
     this.setState({ ...this.state, isFetching: true })
     fetch(ACTUATOR_SERVICE_URL)
       .then(response => response.json())
@@ -47,7 +56,7 @@ export default class BlueGreen extends Component {
     if (!this.state.actuator) return <p>Loading...</p>
     return (
       <div id="layout-content" className="layout-content-wrapper">
-        <h2 class="text-center ">Blue-Green Deployment</h2>
+        <h2 class="text-center ">Blue-Green Deployment - Service call {this.state.count}</h2>
         <ImageBlueGreen />
         <div className="panel-list">
           <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
