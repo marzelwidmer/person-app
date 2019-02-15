@@ -17,7 +17,7 @@ const divStyle = {
 
 const ImageBlueGreen = () => (
   <div style={divStyle}>
-    <img src={blueGreenImg} width="500" height="300"  alt="bluegreen" />
+    <img src={blueGreenImg} width="500" height="200"  alt="bluegreen" />
   </div>
 )
  
