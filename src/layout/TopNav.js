@@ -1,21 +1,8 @@
 import React, { Component } from "react"
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap"
-
-import './Layout.css'
-import { Clock } from '../timer/Clock';
-import { Timer } from '../timer/Timer';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap"
+import "./Layout.css"
+import { Clock } from "../timer/Clock"
+import { Timer } from "../timer/Timer"
 
 class TopNav extends Component {
   constructor(props) {
@@ -35,34 +22,16 @@ class TopNav extends Component {
   render() {
     return (
       <div>
-        <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">MonkeyApp
-           {/* <Timer /> */}
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              {/* <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem> */}
-              <NavItem>
-                <NavLink href="https://github.com/c3smonkey/">GitHub
-                  <Clock clockColor="#68ff75" />
-                </NavLink>
-              </NavItem>
-              {/* <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown> */}
-            </Nav>
-          </Collapse>
+        <Navbar color="dark" dark expand="xl" >
+          <NavbarBrand href="/">MonkeyApp</NavbarBrand>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="https://github.com/c3smonkey/">GitHub</NavLink>
+            </NavItem>
+          </Nav>
+        </Navbar>
+        <Navbar color="dark" dark expand="xl" fixed="bottom">
+          <Clock clockColor="#1ac545" />
         </Navbar>
       </div>
     )
