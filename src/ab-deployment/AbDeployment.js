@@ -52,7 +52,6 @@ export default class AbDeployment extends Component {
         <div className="panel-list">
           <Alert color={`${this.state.actuator.git.branch === "feature2" ? "secondary" : "dark"}`} className="code">
              Greetings from {this.state.actuator.build.artifact} my version is {this.state.actuator.build.version}
-            
           </Alert>
         </div>
       </div>

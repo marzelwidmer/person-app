@@ -4,6 +4,7 @@ import TopNav from "../layout/TopNav"
 import "./App.css"
 import BlueGreen from "../bluegreen/BlueGreen"
 import AbDeployment from '../ab-deployment/AbDeployment';
+import AbTesting from '../ab-testing/AbTesting';
 
  
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           
           <BlueGreen />
           <AbDeployment />
+          <AbTesting />
 
         </div>
       </div>

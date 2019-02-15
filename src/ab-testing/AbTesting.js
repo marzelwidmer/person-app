@@ -23,7 +23,7 @@ import abTestingImg from "./a-b-testing.png"
 )
  
 
-export default class AbDeployment extends Component {
+export default class AbTesting extends Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -48,12 +48,11 @@ export default class AbDeployment extends Component {
     if (!this.state.actuator) return <p>Loading...</p>
     return (
       <div id="layout-content" className="layout-content-wrapper">
-        <h2 class="text-center ">A-B Deployment</h2>
+        <h2 class="text-center ">A-B Testing</h2>
         <ImageAbTesting />
         <div className="panel-list">
           <Alert color={`${this.state.actuator.git.branch === "feature2" ? "secondary" : "dark"}`} className="code">
-            Hello I`m {this.state.actuator.git.branch} from {this.state.actuator.build.artifact}
-            
+             Greetings from {this.state.actuator.build.artifact} my version is {this.state.actuator.build.version}
           </Alert>
         </div>
       </div>
