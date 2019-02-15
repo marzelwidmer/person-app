@@ -13,15 +13,7 @@ class App extends Component {
         <TopNav />
 
         <div>
-          <h2 class="text-center ">
-              <font color="blue">Blue</font>
-              <font color="green">Green</font>
-              - 
-              <font color="blue">A</font>
-              <font color="green">B</font>
-              - Deployment
-          </h2>
-      
+          
           <BlueGreen />
 
         </div>

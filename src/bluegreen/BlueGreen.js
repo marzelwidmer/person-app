@@ -1,7 +1,26 @@
-import React, {  Component } from "react"
+import React, { Component } from "react"
 import { Alert } from "reactstrap"
-
+import blueGreenImg from "./bluegreen.png"
+ 
 const ACTUATOR_SERVICE_URL = `http://bluegreen-dev.apps.c3smonkey.ch//actuator/info`
+
+const divStyle = {
+  padding: "10px",
+  display: "block",
+  marginLeft: "auto",
+  marginRight: "auto",
+  width: "50%",
+  color: "#4db1e8",
+  textAlign: "center",
+  fontFamily: "sans-serif"
+}
+
+const ImageBlueGreen = () => (
+  <div style={divStyle}>
+    <img src={blueGreenImg} width="100%" height="100%" alt="bluegreen" />
+  </div>
+)
+ 
 
 export default class BlueGreen extends Component {
   constructor(props) {
@@ -28,13 +47,13 @@ export default class BlueGreen extends Component {
     if (!this.state.actuator) return <p>Loading...</p>
     return (
       <div id="layout-content" className="layout-content-wrapper">
-         <div className="panel-list">
-         <Alert 
-              color={`${ (this.state.actuator.git.branch === 'feature2')? 'success' : 'primary'}`}
-              className="code">
-              Hello I`m {this.state.actuator.git.branch} from {this.state.actuator.build.artifact}
+        <h2 class="text-center ">Blue-Green Deployment</h2>
+        <ImageBlueGreen />
+        <div className="panel-list">
+          <Alert color={`${this.state.actuator.git.branch === "feature2" ? "success" : "primary"}`} className="code">
+            Hello I`m {this.state.actuator.git.branch} from {this.state.actuator.build.artifact}
           </Alert>
-         </div>
+        </div>
       </div>
     )
   }
