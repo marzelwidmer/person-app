@@ -1,9 +1,8 @@
 import React, { Component } from "react"
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap"
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap"
 import "./Layout.css"
 import { Clock } from "../timer/Clock"
-import { Timer } from "../timer/Timer"
-
+ 
 class TopNav extends Component {
   constructor(props) {
     super(props)
