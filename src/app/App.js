@@ -6,19 +6,19 @@ import GitHub from "../github/GitHub";
 import Customer from "../customer/Customer"
 import { Clock } from '../timer/Clock';
 import BlueGreen from "../bluegreen/BlueGreen";
- 
+
 class App extends Component {
   render() {
- 
+
     document.title = "MonkeyApp"
      return (
        <div className="App">
-         <TopNav />  
+         <TopNav />
          <BlueGreen />
-         {/* <Customer /> */}
- 
+          {/*<Customer />*/}
+
          {/* <GitHub username="c3smonkey" className="App-main"> </GitHub> */}
-         {/* <FetchPerson /> */}
+         {/* <FetchPerson />*/}
        </div>
      )
   }
